@@ -58,8 +58,8 @@ games = None
 
 def Main():
     global games
-    if(os.path.exists(path+"games.json")):
-        file = open(path+"games.json")
+    if(os.path.exists(path+"/games.json")):
+        file = open(path+"/games.json")
         games = json.loads(file.read())
         for x in games:
             pass#games[x]["Icon"] = pygame.image.load( games[x]["Icon"])

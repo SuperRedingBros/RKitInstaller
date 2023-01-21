@@ -29,7 +29,7 @@ import git
 import importlib
 from importlib.machinery import SourceFileLoader
 
-file = "RCade"
+file = "RCades"
 logFile = open("log.txt","w+")
 
 if(not os.path.exists(file)):
