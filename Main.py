@@ -5,12 +5,13 @@ import git
 import sys
 import pathlib
 path = str(pathlib.Path(__file__).parent.resolve())
+print(path)
 def getModule(module):
-    if(not os.path.exists("Modules/"+module["Name"])):
-        repo = git.Repo.clone_from(module["URL"], "Modules/"+module["Name"])
+    if(not os.path.exists(path+"/Modules/"+module["Name"])):
+        repo = git.Repo.clone_from(module["URL"], path+"/Modules/"+module["Name"])
         repo.close()
     else:
-        repo = git.Repo("Modules/"+module["Name"])
+        repo = git.Repo(path+"/Modules/"+module["Name"])
         repo.remotes.origin.pull()
         repo.close()
     sys.path.append(path+"\\Modules\\"+module["Name"])
