@@ -71,17 +71,17 @@ def runGame(game):
     #print(games[game])
     for x in games[game]["Requirments"]:
         getModule(x)
-    if(not os.path.exists(path+"Games/"+game)):
-        repo = git.Repo.clone_from(games[game]["URL"], path+"Games/"+game)
+    if(not os.path.exists(path+"/Games/"+game)):
+        repo = git.Repo.clone_from(games[game]["URL"], path+"/Games/"+game)
         repo.close()
     else:
-        repo = git.Repo(path+"Games/"+game)
+        repo = git.Repo(path+"/Games/"+game)
         repo.remotes.origin.pull()
         repo.close()
     print(path+"\\Games\\"+game)
     sys.path.append(path+"\\Modules\\")
     sys.path.append(path+"\\Games\\"+game)
-    exec(open("Games/"+game+"/Main.py").read())
+    exec(open(path+"/Games/"+game+"/Main.py").read())
 
 def render(games):
     vlist = guis.vlistWidget("List",list)
