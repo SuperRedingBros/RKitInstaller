@@ -90,7 +90,7 @@ def render(games):
         guis.buttonWidget("Hello",overlay,action="runGame('"+x+"')",style={"W":"pygame.display.get_window_size()[0]","H":32,"Background":None})
         hlist = guis.hlistWidget("Hlist",overlay)
         guis.emptyWidget("Empty",hlist,style={"W":"pygame.display.get_window_size()[0]/2-128","H":32})
-        guis.imageWidget("Img",hlist,style={"W":"32","H":"32","Image":games[x]["Icon"]})
+        guis.imageWidget("Img",hlist,style={"W":"32","H":"32","Image":path+"/"+games[x]["Icon"]})
         guis.textWidget("Text",hlist,style={"W":"pygame.display.get_window_size()[0]-32","H":32,"Text":x})
     while looping:
         screen.redraw(gameDisplay)

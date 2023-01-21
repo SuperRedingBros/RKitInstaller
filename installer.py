@@ -29,7 +29,7 @@ import git
 import importlib
 from importlib.machinery import SourceFileLoader
 
-file = "RCades"
+file = "RCade"
 logFile = open("log.txt","w+")
 
 if(not os.path.exists(file)):
@@ -37,7 +37,10 @@ if(not os.path.exists(file)):
     repo.close()
 else:
     repo = git.Repo(file)
-    repo.remotes.origin.pull()
+    try:
+        repo.remotes.origin.pull()
+    except:
+        pass
     repo.close()
 script = open(file+"/Main.py")
 print(script,file=logFile)
