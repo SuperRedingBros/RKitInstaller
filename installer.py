@@ -52,7 +52,7 @@ if getattr(sys, 'frozen', False):
     sys.path.append(app_path)
 else:
     app_path = os.path.dirname(os.path.abspath(__file__))
-#print(os.listdir(app_path+"/RCade/Modules/Guis"))
+print(os.listdir(app_path+"/RCade/Modules/Guis"))
 SourceFileLoader("Main",file+"/Main.py").load_module()
 try:
     pass
