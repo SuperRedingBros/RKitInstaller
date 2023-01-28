@@ -32,6 +32,7 @@ from importlib.machinery import SourceFileLoader
 file = "RCade"
 logFile = open("log.txt","w+")
 
+
 if(not os.path.exists(file)):
     repo = git.Repo.clone_from('https://github.com/SuperRedingBros/RKitInstaller.git', file)
     repo.close()
@@ -51,6 +52,7 @@ if getattr(sys, 'frozen', False):
     sys.path.append(app_path)
 else:
     app_path = os.path.dirname(os.path.abspath(__file__))
+#print(os.listdir(app_path+"/RCade/Modules/Guis"))
 SourceFileLoader("Main",file+"/Main.py").load_module()
 try:
     pass
