@@ -6,7 +6,7 @@ import sys
 import pathlib
 path = str(pathlib.Path(__file__).parent.resolve())
 print(path)
-print(os.listdir(path+"/Modules/Guis"))
+#print(os.listdir(path+"/Modules/Guis"))
 def getModule(module):
     if(not os.path.exists(path+"/Modules/")):
         os.mkdir(path+"/Modules/")
@@ -19,8 +19,8 @@ def getModule(module):
         repo.close()
     sys.path.append(path+"/Modules/"+module["Name"])
 getModule({"URL":"https://github.com/SuperRedingBros/GUIs.git","Name":"Guis"})
-print(os.listdir(path+"/Modules/"))
-print(sys.path)
+#print(os.listdir(path+"/Modules/"))
+#print(sys.path)
 import guis
 
 pygame.init()

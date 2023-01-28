@@ -45,7 +45,7 @@ else:
         print("Update Failed",file=logFile)
     repo.close()
 script = open(file+"/Main.py")
-print(script,file=logFile)
+#print(script,file=logFile)
 sys.path.append(os.path.dirname(sys.executable))
 if getattr(sys, 'frozen', False):
     app_path = os.path.dirname(sys.executable)
