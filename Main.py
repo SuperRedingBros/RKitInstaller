@@ -6,6 +6,7 @@ import sys
 import pathlib
 path = str(pathlib.Path(__file__).parent.resolve())
 print(path)
+print(os.listdir(path+"/Modules/Guis"))
 def getModule(module):
     if(not os.path.exists(path+"/Modules/")):
         os.mkdir(path+"/Modules/")
