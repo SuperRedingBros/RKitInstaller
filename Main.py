@@ -17,7 +17,7 @@ def getModule(module):
         repo = git.Repo(path+"/Modules/"+module["Name"])
         repo.remotes.origin.pull()
         repo.close()
-    sys.path.append(path+"\\Modules\\"+module["Name"])
+    sys.path.append(path+"/Modules/"+module["Name"])
 getModule({"URL":"https://github.com/SuperRedingBros/GUIs.git","Name":"Guis"})
 print(os.listdir(path+"/Modules/"))
 print(sys.path)
@@ -83,9 +83,9 @@ def runGame(game):
         repo = git.Repo(path+"/Games/"+game)
         repo.remotes.origin.pull()
         repo.close()
-    print(path+"\\Games\\"+game)
-    sys.path.append(path+"\\Modules\\")
-    sys.path.append(path+"\\Games\\"+game)
+    print(path+"/Games/"+game)
+    sys.path.append(path+"/Modules/")
+    sys.path.append(path+"/Games/"+game)
     exec(open(path+"/Games/"+game+"/Main.py").read())
 
 def render(games):
