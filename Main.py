@@ -17,6 +17,7 @@ def getModule(module):
         repo.close()
     sys.path.append(path+"\\Modules\\"+module["Name"])
 getModule({"URL":"https://github.com/SuperRedingBros/GUIs.git","Name":"Guis"})
+print(sys.path)
 import guis
 
 pygame.init()
