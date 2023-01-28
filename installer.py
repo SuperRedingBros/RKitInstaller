@@ -51,8 +51,9 @@ if getattr(sys, 'frozen', False):
     sys.path.append(app_path)
 else:
     app_path = os.path.dirname(os.path.abspath(__file__))
+SourceFileLoader("Main",file+"/Main.py").load_module()
 try:
-    SourceFileLoader("Main",file+"/Main.py").load_module()
+    pass
 except Exception as e:
     print(e)
     print(e,file=logFile)

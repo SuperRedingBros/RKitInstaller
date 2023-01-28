@@ -6,8 +6,9 @@ import sys
 import pathlib
 path = str(pathlib.Path(__file__).parent.resolve())
 print(path)
-print(os.listdir(path+"/Modules"))
 def getModule(module):
+    if(not os.path.exists((path+"/Modules/")):
+        os.mkdir(path+"/Modules/")
     if(not os.path.exists(path+"/Modules/"+module["Name"])):
         repo = git.Repo.clone_from(module["URL"], path+"/Modules/"+module["Name"])
         repo.close()
@@ -17,6 +18,7 @@ def getModule(module):
         repo.close()
     sys.path.append(path+"\\Modules\\"+module["Name"])
 getModule({"URL":"https://github.com/SuperRedingBros/GUIs.git","Name":"Guis"})
+print(os.listdir(path+"/Modules/"))
 print(sys.path)
 import guis
 
