@@ -40,7 +40,8 @@ else:
     try:
         repo.remotes.origin.pull()
     except:
-        pass
+        print("Update Failed")
+        print("Update Failed",file=logFile)
     repo.close()
 script = open(file+"/Main.py")
 print(script,file=logFile)

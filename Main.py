@@ -6,6 +6,7 @@ import sys
 import pathlib
 path = str(pathlib.Path(__file__).parent.resolve())
 print(path)
+print(os.listdir(path))
 def getModule(module):
     if(not os.path.exists(path+"/Modules/"+module["Name"])):
         repo = git.Repo.clone_from(module["URL"], path+"/Modules/"+module["Name"])
