@@ -42,7 +42,7 @@ version.filename = %(source.dir)s/installer.py
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,pygame==2.1.0,hostpython3,numpy,jnius,sdl2,sdl2_image,sdl2_mixer,sdl2_ttf,gitpython,js2py,pyjsparser,ffpyplayer,numpy,gitdb,smmap,,matplotlib,pymediainfo
+requirements = python3,pygame==2.1.0,hostpython3,numpy,jnius,sdl2,sdl2_image,sdl2_mixer,sdl2_ttf,gitpython,js2py,pyjsparser,ffpyplayer,numpy,gitdb,smmap,,matplotlib,pymediainfo,requests,urllib3,charset_normalizer,chardet,idna,certifi
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes

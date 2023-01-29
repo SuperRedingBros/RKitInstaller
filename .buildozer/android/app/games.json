@@ -1,0 +1,12 @@
+{
+  "DuckMassacre":{
+    "Icon":"assets/duck_icon.png",
+    "URL":"https://github.com/SuperRedingBros/DuckMurder.git",
+    "Requirments":[
+      {
+        "URL":"https://github.com/SuperRedingBros/GUIs.git",
+        "Name":"Guis"
+      }
+    ]
+  }
+}
