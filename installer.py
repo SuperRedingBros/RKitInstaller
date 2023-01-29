@@ -1,4 +1,32 @@
+version = "1.0.0"
 #from guis.guis import *
+
+import os
+import traceback
+
+try:
+    from android.permissions import request_permissions, Permission
+
+    request_permissions([Permission.WRITE_EXTERNAL_STORAGE])
+
+    from android.storage import primary_external_storage_path
+
+    primary_ext_storage = primary_external_storage_path()
+    print(primary_ext_storage)
+    if not os.path.exists(primary_ext_storage + "/Documents/RCade/"):
+        os.mkdir(primary_ext_storage + "/Documents/RCade")
+    newfile = open(primary_ext_storage+"/Documents/RCade/test.py","w")
+    newfile.write("print(\"Hello\")")
+    newfile.close()
+    newfile = open(primary_ext_storage+"/Documents/RCade/test.py","r")
+    exec(newfile.read())
+
+except Exception as e:
+    print(e)
+    print(traceback.format_exc())
+
+
+
 import pygame
 from pygame.locals import *
 import random
@@ -11,7 +39,6 @@ import random
 import glob
 import importlib
 import sys
-import os
 import pathlib
 import difflib
 import zipfile
@@ -31,6 +58,8 @@ from importlib.machinery import SourceFileLoader
 
 file = "RCade"
 logFile = open("log.txt","w+")
+
+
 
 
 if(not os.path.exists(file)):

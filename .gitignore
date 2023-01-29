@@ -3,4 +3,6 @@ build
 dist
 Modules
 Games
+bin
+.buildozer
 log.txt
