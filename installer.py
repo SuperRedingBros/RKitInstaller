@@ -111,6 +111,7 @@ def compatibilityGit(repo, target):
         unPatchSSL()
 
 
+compatibilityGit(remoteRepo,file)
 # print(script,file=logFile)
 sys.path.append(os.path.dirname(sys.executable))
 if getattr(sys, 'frozen', False):
