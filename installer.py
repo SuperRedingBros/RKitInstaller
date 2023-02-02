@@ -85,7 +85,7 @@ except:
         print(traceback.format_exc())
 
 
-file = str(getPath()) + "/RCade"
+file = str(getPath()) + "/Documents/RCade"
 remoteRepo = 'http://github.com/SuperRedingBros/RKitInstaller.git'
 
 
