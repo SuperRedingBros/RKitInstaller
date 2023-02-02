@@ -30,6 +30,7 @@ dh = 640
 ldw = 1280
 ldh = 640
 variabletest = 0
+print("#4")
 clock = pygame.time.Clock()
 screen = guis.mainWidget("blue", inglobals=globals(), style={}, data={})
 list = guis.vlistWidget("List", screen)
@@ -39,7 +40,7 @@ fontpath = str(pathlib.PurePath(guis.path, "assets/Xolonium-Bold.ttf"))
 guis.textWidget("Text", hlist, style={"W": 128, "H": 64, "Text": "RCade", "Font": {"File": fontpath, "Scale": 40,
                                                                                    "Italics": False,
                                                                                    "Underline": False}})
-
+print("#4.25")
 if True:
     if usefull:
         gameDisplay = pygame.display.set_mode((dw, dh), pygame.FULLSCREEN, pygame.RESIZABLE)
@@ -49,10 +50,12 @@ if True:
     else:
         gameDisplay = pygame.display.set_mode((dw, dh), pygame.RESIZABLE)
     s = pygame.display.get_window_size()
+    print("#4.29")
     dw = s[0]
     dh = s[1]
     # pygame.display.set_icon(pygame.image.load( "./assets/p.png"))
     pygame.display.set_caption('RCade')
+print("#4.5")
 
 games = {}
 
@@ -80,6 +83,7 @@ def runGame(game):
     exec(open(path + "/Games/" + game + "/Main.py").read())
 
 ready = False
+print("#5")
 
 
 def render():
