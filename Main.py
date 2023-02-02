@@ -48,7 +48,9 @@ if True:
         dw = s[0]
         dh = s[1]
     else:
+        print("#4.24")
         gameDisplay = pygame.display.set_mode((dw, dh), pygame.RESIZABLE)
+        print("#4.26")
     s = pygame.display.get_window_size()
     print("#4.29")
     dw = s[0]
