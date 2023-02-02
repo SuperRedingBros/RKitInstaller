@@ -16,13 +16,7 @@ print("hello: "+str(installer.getPath()))
 def getModule(module):
     if not os.path.exists(path + "/Modules/"):
         os.mkdir(path + "/Modules/")
-    if not os.path.exists(path + "/Modules/" + module["Name"]):
-        repo = git.Repo.clone_from(module["URL"], path + "/Modules/" + module["Name"])
-        repo.close()
-    else:
-        repo = git.Repo(path + "/Modules/" + module["Name"])
-        repo.remotes.origin.pull()
-        repo.close()
+    installer.compatibilityGit(module["URL"], path + "/Modules/" + module["Name"])
     sys.path.append(path + "/Modules/" + module["Name"])
 
 
@@ -78,13 +72,7 @@ def runGame(game):
     # print(games[game])
     for x in games[game]["Requirments"]:
         getModule(x)
-    if not os.path.exists(path + "/Games/" + game):
-        repo = git.Repo.clone_from(games[game]["URL"], path + "/Games/" + game)
-        repo.close()
-    else:
-        repo = git.Repo(path + "/Games/" + game)
-        repo.remotes.origin.pull()
-        repo.close()
+    installer.compatibilityGit(games[game]["URL"], path + "/Games/" + game)
     print(path + "/Games/" + game)
     sys.path.append(path + "/Modules/")
     sys.path.append(path + "/Games/" + game)

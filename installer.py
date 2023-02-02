@@ -5,7 +5,7 @@ import requests
 import urllib3
 import sys
 from importlib.machinery import SourceFileLoader
-version = "1.0.0"
+version = "1.0.1"
 logFile = open("log.txt", "w+")
 
 
@@ -69,36 +69,47 @@ def checkSSL():
     except Exception:
         return False
 
-
 useDulwich = True
-file = str(getPath()) + "/RCade"
-repo = 'http://github.com/SuperRedingBros/RKitInstaller.git'
+
 try:
     import git
-    if useDulwich:
-        raise git.GitError("Skipping git")
-    if not os.path.exists(file):
-        repo = git.Repo.clone_from(repo, file)
-        repo.close()
-    else:
-        repo = git.Repo(file)
-        try:
-            repo.remotes.origin.pull()
-        except git.GitError as e:
-            print("Update Failed")
-            print("Update Failed: "+traceback.format_exc(), file=logFile)
-        repo.close()
+
+    useDulwich = False
 except git.GitError:
-    from dulwich import porcelain
-    import certifi
-    from urllib3.request import RequestMethods
-    import urllib3.poolmanager as manager
-    patchSSL()
-    if not os.path.exists(file):
-        porcelain.clone(repo, file)
+    try:
+        from dulwich import porcelain
+        import certifi
+        from urllib3.request import RequestMethods
+        import urllib3.poolmanager as manager
+    except Exception:
+        print(traceback.format_exc())
+
+
+file = str(getPath()) + "/RCade"
+remoteRepo = 'http://github.com/SuperRedingBros/RKitInstaller.git'
+
+
+def compatibilityGit(repo, target):
+    if useDulwich:
+        if not os.path.exists(file):
+            gitrepo = git.Repo.clone_from(repo, target)
+            gitrepo.close()
+        else:
+            gitrepo = git.Repo(file)
+            try:
+                repo.remotes.origin.pull()
+            except git.GitError :
+                print("Update Failed")
+                print("Update Failed: "+traceback.format_exc(), file=logFile)
+            gitrepo.close()
     else:
-        porcelain.pull(file, repo)
-    unPatchSSL()
+        patchSSL()
+        if not os.path.exists(file):
+            porcelain.clone(repo, target)
+        else:
+            porcelain.pull(target, repo)
+        unPatchSSL()
+
 
 # print(script,file=logFile)
 sys.path.append(os.path.dirname(sys.executable))
