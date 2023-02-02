@@ -1,7 +1,6 @@
 import os
 import json
 import pygame
-import git
 import sys
 import pathlib
 import installer
@@ -72,14 +71,19 @@ def runGame(game):
     # print(games[game])
     for x in games[game]["Requirments"]:
         getModule(x)
+    if not os.path.exists(path + "/Games/"):
+        os.makedirs(path + "/Games/")
     installer.compatibilityGit(games[game]["URL"], path + "/Games/" + game)
     print(path + "/Games/" + game)
     sys.path.append(path + "/Modules/")
     sys.path.append(path + "/Games/" + game)
     exec(open(path + "/Games/" + game + "/Main.py").read())
 
+ready = False
+
 
 def render():
+    global ready
     vlist = guis.vlistWidget("List", list)
     for x in games:
         overlay = guis.overlayWidget("Overlay", vlist)
@@ -90,9 +94,15 @@ def render():
         guis.imageWidget("Img", gamehlist, style={"W": "32", "H": "32", "Image": path + "/" + games[x]["Icon"]})
         guis.textWidget("Text", gamehlist, style={"W": "pygame.display.get_window_size()[0]-32", "H": 32, "Text": x})
     while looping:
-        screen.redraw(gameDisplay)
+        if ready:
+            screen.redraw(gameDisplay)
         # print(x)
+        pygame.event.pump()
         for event in pygame.event.get():
+            if hasattr(pygame,"APP_WILLENTERFOREGROUND") and event.type == pygame.APP_WILLENTERFOREGROUND:
+                ready = True
+            if event.type == pygame.WINDOWSHOWN:
+                ready = True
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
@@ -118,7 +128,7 @@ def render():
                 pygame.display.update()
             if event.type == pygame.WINDOWLEAVE:
                 screen.prossesinputs("Mouseleave", event, gameDisplay, globals())
-        screen.update()
+        #screen.update()
         pygame.display.update()
 
 

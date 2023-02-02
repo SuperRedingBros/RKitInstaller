@@ -1,7 +1,11 @@
 # from guis.guis import *
+import importlib
 import os
+import shutil
 import tempfile
 import traceback
+
+import dulwich.errors
 import requests
 import urllib3
 import sys
@@ -15,7 +19,7 @@ def patchSSL():
 
 
 oldInit = getattr(urllib3.PoolManager, "__init__")
-print(oldInit)
+# print(oldInit)
 
 
 def unPatchSSL():
@@ -116,21 +120,33 @@ def compatibilityGit(repo, target):
         if not os.path.exists(target):
             porcelain.clone(repo, target, depth=1)
         else:
-            porcelain.pull(target, repo)
+            try:
+                porcelain.pull(target, repo)
+            except dulwich.errors.GitProtocolError:
+                shutil.rmtree(target)
+                porcelain.clone(repo, target, depth=1)
         unPatchSSL()
 
 
-compatibilityGit(remoteRepo, file)
-# print(script,file=logFile)
-sys.path.append(os.path.dirname(sys.executable))
-if getattr(sys, 'frozen', False):
-    app_path = os.path.dirname(sys.executable)
-    sys.path.append(app_path)
-else:
-    app_path = os.path.dirname(os.path.abspath(__file__))
-try:
-    SourceFileLoader("Main", file + "/Main.py").load_module()
-except Exception as e:
-    print(e)
-    print(e, file=logFile)
-logFile.close()
+def Main():
+    print("HI")
+    compatibilityGit(remoteRepo, file)
+    # print(script,file=logFile)
+    sys.path.append(os.path.dirname(sys.executable))
+    if getattr(sys, 'frozen', False):
+        app_path = os.path.dirname(sys.executable)
+        sys.path.append(app_path)
+    else:
+        app_path = os.path.dirname(os.path.abspath(__file__))
+    try:
+        importlib.import_module("Main", file + "/Main.py")
+        # SourceFileLoader().load_module()
+    except Exception as e:
+        print(traceback.format_exc())
+        print(e, file=logFile)
+    logFile.close()
+
+
+if __name__ == "__main__":
+    Main()
+

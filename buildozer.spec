@@ -25,10 +25,10 @@ source.include_exts =
 #source.include_patterns = assets/*,images/*.png
 
 # (list) Source files to exclude (let empty to not exclude anything)
-source.exclude_exts = spec,bin,buildozer,build,RCade
+source.exclude_exts = spec,bin,buildozer,build,RCade,Games, Modules
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-source.exclude_dirs = tests, bin, RCade, build, dist
+source.exclude_dirs = tests, bin, RCade, build, dist,Games, Modules
 
 # (list) List of exclusions using pattern matching
 #source.exclude_patterns = license,images/*/*.jpg
@@ -42,7 +42,7 @@ version.filename = %(source.dir)s/installer.py
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,pygame==2.1.0,hostpython3,numpy,openssl,jnius,sdl2,sdl2_image,sdl2_mixer,sdl2_ttf,js2py,pyjsparser,ffpyplayer,numpy,smmap,,matplotlib,pymediainfo,requests[security],urllib3==1.24.3,charset-normalizer==2.1.1,chardet,idna,certifi==2015.04.28,dulwich
+requirements = python3,pygame==2.1.0,hostpython3,numpy,openssl,jnius,sdl2,sdl2_image,sdl2_mixer,sdl2_ttf,js2py,pyjsparser,ffpyplayer,numpy,smmap,matplotlib,pymediainfo,requests[security],urllib3==1.24.3,charset-normalizer==2.1.1,chardet,idna,certifi==2015.04.28,dulwich
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
