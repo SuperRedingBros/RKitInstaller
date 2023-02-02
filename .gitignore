@@ -5,4 +5,5 @@ Modules
 Games
 bin
 .buildozer
+.idea
 log.txt
