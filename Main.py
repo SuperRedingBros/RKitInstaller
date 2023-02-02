@@ -40,6 +40,15 @@ fontpath = str(pathlib.PurePath(guis.path, "assets/Xolonium-Bold.ttf"))
 guis.textWidget("Text", hlist, style={"W": 128, "H": 64, "Text": "RCade", "Font": {"File": fontpath, "Scale": 40,
                                                                                    "Italics": False,
                                                                                    "Underline": False}})
+
+isandroid = False
+try:
+    import android
+    isandroid = True
+except:
+    pass
+
+
 print("#4.25")
 if True:
     if usefull:
@@ -49,7 +58,8 @@ if True:
         dh = s[1]
     else:
         print("#4.24")
-        gameDisplay = pygame.display.set_mode((dw, dh), pygame.RESIZABLE)
+        if not isandroid:
+            gameDisplay = pygame.display.set_mode((dw, dh), pygame.RESIZABLE)
         print("#4.26")
     s = pygame.display.get_window_size()
     print("#4.29")
@@ -90,6 +100,7 @@ print("#5")
 
 def render():
     global ready
+    global gameDisplay
     vlist = guis.vlistWidget("List", list)
     for x in games:
         overlay = guis.overlayWidget("Overlay", vlist)
@@ -107,6 +118,7 @@ def render():
         for event in pygame.event.get():
             if hasattr(pygame,"APP_WILLENTERFOREGROUND") and event.type == pygame.APP_WILLENTERFOREGROUND:
                 ready = True
+                gameDisplay = pygame.display.set_mode((dw, dh), pygame.RESIZABLE)
             if event.type == pygame.WINDOWSHOWN:
                 ready = True
             if event.type == pygame.QUIT:
