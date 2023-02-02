@@ -7,7 +7,7 @@ import pathlib
 import installer
 
 path = str(pathlib.Path(__file__).parent.resolve())
-print(path)
+print("hello: "+str(installer.getPath()))
 
 
 # print(os.listdir(path+"/Modules/Guis"))
