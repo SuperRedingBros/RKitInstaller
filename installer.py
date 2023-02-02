@@ -46,7 +46,7 @@ def getPath():
     except ImportError:
         """The files path"""
         return os.path.dirname(__file__)
-    except :
+    finally:
         print(traceback.format_exc())
 
 
