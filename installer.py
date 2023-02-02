@@ -90,7 +90,7 @@ remoteRepo = 'http://github.com/SuperRedingBros/RKitInstaller.git'
 
 
 def compatibilityGit(repo, target):
-    if useDulwich:
+    if not useDulwich:
         if not os.path.exists(file):
             gitrepo = git.Repo.clone_from(repo, target)
             gitrepo.close()
