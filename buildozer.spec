@@ -28,7 +28,7 @@ source.include_exts =
 source.exclude_exts = spec,bin,buildozer,build,RCade
 
 # (list) List of directory to exclude (let empty to not exclude anything)
-#source.exclude_dirs = tests, bin, RCade
+source.exclude_dirs = tests, bin, RCade, build, dist
 
 # (list) List of exclusions using pattern matching
 #source.exclude_patterns = license,images/*/*.jpg
@@ -42,7 +42,7 @@ version.filename = %(source.dir)s/installer.py
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3,pygame==2.1.0,hostpython3,numpy,jnius,sdl2,sdl2_image,sdl2_mixer,sdl2_ttf,gitpython,js2py,pyjsparser,ffpyplayer,numpy,gitdb,smmap,,matplotlib,pymediainfo,requests,urllib3,charset_normalizer,chardet,idna,certifi
+requirements = python3,pygame==2.1.0,hostpython3,numpy,openssl,jnius,sdl2,sdl2_image,sdl2_mixer,sdl2_ttf,js2py,pyjsparser,ffpyplayer,numpy,smmap,,matplotlib,pymediainfo,requests[security],urllib3==1.24.3,charset-normalizer==2.1.1,chardet,idna,certifi==2015.04.28,dulwich
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -91,7 +91,7 @@ fullscreen = 0
 android.presplash_color = #FAFF00
 
 # (list) Permissions
-android.permissions =  Permission.WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
+android.permissions =  Permission.WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE,INTERNET
 
 # (int) Target Android API, should be as high as possible.
 #android.api = 31
@@ -241,7 +241,7 @@ android.arch = x86_64
 #p4a.fork = kivy
 
 # (str) python-for-android branch to use, defaults to master
-p4a.branch = develop
+p4a.branch = master
 
 # (str) python-for-android git clone directory (if empty, it will be automatically cloned from github)
 #p4a.source_dir =
