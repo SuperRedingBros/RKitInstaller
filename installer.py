@@ -75,7 +75,7 @@ try:
     import git
 
     useDulwich = False
-except git.GitError:
+except:
     try:
         from dulwich import porcelain
         import certifi
