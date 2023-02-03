@@ -101,6 +101,7 @@ def render():
     global ready
     global gameDisplay
     vlist = guis.vlistWidget("List", list)
+    ready = True
     for x in games:
         overlay = guis.overlayWidget("Overlay", vlist)
         guis.buttonWidget("Hello", overlay, action="runGame('" + x + "')",
@@ -115,10 +116,6 @@ def render():
         # print(x)
         pygame.event.pump()
         for event in pygame.event.get():
-            if hasattr(pygame,"APP_WILLENTERFOREGROUND") and event.type == pygame.APP_WILLENTERFOREGROUND:
-                ready = True
-            if event.type == pygame.WINDOWSHOWN:
-                ready = True
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
