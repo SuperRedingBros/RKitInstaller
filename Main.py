@@ -149,7 +149,8 @@ def render():
             if event.type == pygame.WINDOWLEAVE:
                 screen.prossesinputs("Mouseleave", event, gameDisplay, globals())
         #screen.update()
-        pygame.display.update()
+        if ready:
+            pygame.display.update()
 
 
 Main()
