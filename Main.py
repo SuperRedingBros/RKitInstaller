@@ -60,13 +60,12 @@ if True:
         print("#4.24")
         gameDisplay = pygame.display.set_mode((dw, dh), pygame.RESIZABLE)
         print("#4.26")
-    if not isandroid:
-        s = pygame.display.get_window_size()
-        print("#4.29")
-        dw = s[0]
-        dh = s[1]
+    s = pygame.display.get_window_size()
+    print("#4.29")
+    dw = s[0]
+    dh = s[1]
         # pygame.display.set_icon(pygame.image.load( "./assets/p.png"))
-        pygame.display.set_caption('RCade')
+    pygame.display.set_caption('RCade')
 print("#4.5")
 
 games = {}
