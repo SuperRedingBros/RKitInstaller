@@ -45,6 +45,7 @@ isandroid = False
 try:
     import android
     isandroid = True
+    usefull = True
 except:
     pass
 
@@ -64,7 +65,7 @@ if True:
     print("#4.29")
     dw = s[0]
     dh = s[1]
-        # pygame.display.set_icon(pygame.image.load( "./assets/p.png"))
+    # pygame.display.set_icon(pygame.image.load( "./assets/p.png"))
     pygame.display.set_caption('RCade')
 print("#4.5")
 
