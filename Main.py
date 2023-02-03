@@ -61,12 +61,13 @@ if True:
         if not isandroid:
             gameDisplay = pygame.display.set_mode((dw, dh), pygame.RESIZABLE)
         print("#4.26")
-    s = pygame.display.get_window_size()
-    print("#4.29")
-    dw = s[0]
-    dh = s[1]
-    # pygame.display.set_icon(pygame.image.load( "./assets/p.png"))
-    pygame.display.set_caption('RCade')
+    if not isandroid:
+        s = pygame.display.get_window_size()
+        print("#4.29")
+        dw = s[0]
+        dh = s[1]
+        # pygame.display.set_icon(pygame.image.load( "./assets/p.png"))
+        pygame.display.set_caption('RCade')
 print("#4.5")
 
 games = {}
@@ -119,6 +120,7 @@ def render():
             if hasattr(pygame,"APP_WILLENTERFOREGROUND") and event.type == pygame.APP_WILLENTERFOREGROUND:
                 ready = True
                 gameDisplay = pygame.display.set_mode((dw, dh), pygame.RESIZABLE)
+                pygame.display.set_caption('RCade')
             if event.type == pygame.WINDOWSHOWN:
                 ready = True
             if event.type == pygame.QUIT:
