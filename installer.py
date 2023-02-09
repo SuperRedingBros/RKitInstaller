@@ -5,9 +5,6 @@ import shutil
 import tempfile
 import traceback
 
-import dulwich.errors
-import requests
-import urllib3
 import sys
 from importlib.machinery import SourceFileLoader
 version = "1.0.1"
@@ -18,7 +15,7 @@ def patchSSL():
     setattr(urllib3.PoolManager, "__init__", patch)
 
 
-oldInit = getattr(urllib3.PoolManager, "__init__")
+
 # print(oldInit)
 
 
@@ -67,7 +64,6 @@ def checkSSL():
 useDulwich = True
 
 try:
-    raise Exception()
     import git
 
     useDulwich = False
@@ -77,6 +73,7 @@ except:
         import certifi
         from urllib3.request import RequestMethods
         import urllib3.poolmanager as manager
+        oldInit = getattr(urllib3.PoolManager, "__init__")
     except Exception:
         print(traceback.format_exc())
 
@@ -139,7 +136,7 @@ def Main():
     else:
         app_path = os.path.dirname(os.path.abspath(__file__))
     try:
-        importlib.import_module("Main", file + "/Main.py")
+        importlib.import_module("main", file + "/main.py")
         # SourceFileLoader().load_module()
     except Exception as e:
         print(traceback.format_exc())
@@ -149,4 +146,3 @@ def Main():
 
 if __name__ == "__main__":
     Main()
-
